@@ -2,7 +2,7 @@
 #install.packages("caTools")
 library(tidyverse)
 library(caTools) # Splitting the data set
-install.packages("moments")
+#install.packages("moments")
 library(moments)
 
 
@@ -72,12 +72,12 @@ log_model <- glm(admit ~ gre + gpa + rank, data = train_data, family = binomial)
 
 # Display model summary
 summary(log_model) 
-#in a model, the variable with the highest absolute coefficient, the more important the variable is.It also needs to be significant.
+#in a model, the variable with the highest absolute coefficient, the more important the variable is. It also needs to be significant.
 # --Which variable in the data is the most important for predicting admission status? -- rank is the most important variable in predicting admission status.
 # --This is mostly because it has the highest absolute coefficient and is highly significant (meaning it is less than the p-value .01 being at .000923)
 
 # glm() fits a generalized linear model.
-# am ~ mpg + hp + wt means we predict am based on mpg (miles per gallon), hp (horsepower), and wt (weight).
+# admit ~ gre + gpa + rank means we predict admit based on gre, gpa, and rank.
 # family = binomial specifies logistic regression (since it models probabilities).
 # summary(log_model) displays coefficients, significance levels, and model fit statistics.
 
@@ -120,7 +120,14 @@ ggplot(test_data, aes(x = gpa, y = as.numeric(as.character(admit)), color = as.f
        y = "Admissions (0 = Do Not Admit, 1 = Admit)") +
   scale_color_manual(values = c("red", "blue"), name = "Prediction")
 
+##Fit the model, report, and interpret the accuracy, precision and recall of the model.
 
+#The accuracy of this model is 0.717, which means that the model correctly predicted 71.7% of the observations in the test dataset.
 
-
+# The model has a precision of 0.643, which means that 64.3% of the predicted positive cases were correct. 
+precision <- conf_matrix[2,2] / (conf_matrix[2,2] + conf_matrix[2,1])
+precision
+# The model has a recall of .237, which means that 23.7% of the actual positive cases were correctly predicted.
+recall <- conf_matrix[2,2] / (conf_matrix[2,2] + conf_matrix[1,2])
+recall
 
