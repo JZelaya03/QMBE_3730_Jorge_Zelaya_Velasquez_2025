@@ -131,7 +131,7 @@ ggplot(Vintage_Restaurant_long, aes(x = Month, y = Sales, color = Year, group = 
   labs(title = "Vintage Restaurant Sales", 
        y = "Sales", 
        x = "Month") +
-  theme_minimal() +
+  theme_minimal()
 
   #The underlying pattern in the time series is that the sales increase from the first year to the third year. The Sales are at its highest when entering the winter season.
   
