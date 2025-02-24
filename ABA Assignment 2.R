@@ -77,7 +77,7 @@ summary(log_model)
 # --This is mostly because it has the highest absolute coefficient and is highly significant (meaning it is less than the p-value .01 being at .000923)
 
 # glm() fits a generalized linear model.
-# am ~ mpg + hp + wt means we predict am based on mpg (miles per gallon), hp (horsepower), and wt (weight).
+# admit ~ gre + gpa + rank means we predict admit based on gre, gpa, and rank.
 # family = binomial specifies logistic regression (since it models probabilities).
 # summary(log_model) displays coefficients, significance levels, and model fit statistics.
 
